@@ -7,12 +7,13 @@ export interface IRanking extends Document {
 }
 
 export interface IAnime extends Document {
-    animeName: string
-    animeReview: string
-    animeGender: string
-    animeStudio: string
-    animeDate: string
-    animeImg: string
+    name: string
+    nameUrl: string
+    review: string
+    gender: string
+    studio: string
+    date: string
+    img: string
     followers: PopulatedDoc<IUser & Document>[]
     animeRanking: {
         user: Types.ObjectId,
@@ -21,36 +22,41 @@ export interface IAnime extends Document {
 }
 
 const AnimeSchema: Schema = new Schema({
-    animeName: {
+    name: {
         type: String,
         required: true,
         trim: true,
         unique: true
     },
-    animeReview: {
+    nameUrl: {
+        type: String,
+        trim: true,
+        unique: true
+    },
+    review: {
         type: String,
         required: true,
         trim: true
     },
-    animeGender:{
+    gender:{
         type: String,
         required: true,
         trim: true
     },
-    animeStudio:{
+    studio:{
         type: String,
         required: true,
         trim: true
     },
-    animeDate: {
+    date: {
         type: String,
         required: true,
         trim: true
     },
-    animeImg:{
+    img:{
         type: String,
-        required: true,
-        trim: true
+        trim: true,
+        default:"../src/assets/covers/1.png"
     },
     followers:[{
         type: Types.ObjectId,

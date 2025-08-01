@@ -8,18 +8,16 @@ const router = Router()
 router.get('/' , AnimeController.getAllAnimes )
 
 router.post('/add' , 
-    body("animeName")
+    body("name")
         .notEmpty().withMessage('Falta el nombre del anime'),
-    body("animeReview")
+    body("review")
         .notEmpty().withMessage('Falta el resumen del anime'),
-    body("animeGender")
+    body("gender")
         .notEmpty().withMessage('Falta el género del anime'),
-    body("animeStudio")
+    body("studio")
         .notEmpty().withMessage('Falta el estudio del anime'),
-    body("animeDate")
+    body("date")
         .notEmpty().withMessage('Falta la fecha del anime'),
-    body("animeImg")
-        .notEmpty().withMessage('Falta la portada del anime'),
     handleInputErrors,
     AnimeController.addAnime 
 )
@@ -30,16 +28,14 @@ router.get('/:id' ,
 
 router.put('/:id' ,
     param('id').isMongoId().withMessage('id no válido'),
-    body("animeName")
+    body("name")
         .notEmpty().withMessage('Falta el nombre del anime'),
-    body("animeReview")
+    body("review")
         .notEmpty().withMessage('Falta el resumen del anime'),
-    body("animeGender")
+    body("gender")
         .notEmpty().withMessage('Falta el género del anime'),
-    body("animeDate")
+    body("date")
         .notEmpty().withMessage('Falta la fecha del anime'),
-    body("animeImg")
-        .notEmpty().withMessage('Falta la portada del anime'),
     handleInputErrors,
     AnimeController.updateAnime )
 
